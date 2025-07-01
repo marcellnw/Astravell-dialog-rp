@@ -199,11 +199,17 @@
           <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/relix%20abyss.png" alt="Relik Abyssalis" />
           <strong>Relik Abyssalis</strong><br> Simbol kegelapan purba, misterius, memancarkan aura kehancuran.
         </div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Kenan.png" alt="Orven" />
+          <strong>Orven</strong><br> Prajurit setia, bersumpah melindungi Astravell dengan segenap jiwa dan raganya.
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Drama</h2>
+
+      <h3>🌑 ADEGAN 1</h3>
       <div class="dialogue">
         <p><strong>Harvi:</strong> Paduka Raja, hutan Eternael bergetar. Cahaya rembulan tak stabil.</p>
         <p><strong>Michell:</strong> Doaku tertolak. Aku merasa… Relik Abyssalis telah bangkit.</p>
@@ -211,6 +217,35 @@
         <p><strong>Jonathan:</strong> Relik itu luka lama. Dan luka itu… sedang membuka kembali.</p>
         <p><strong>Marcell:</strong> Kita harus selaraskan lima cahaya bulan sebelum gerhana sempurna. Jika tidak, semuanya akan hancur.</p>
       </div>
+
+      <h3>🌘 ADEGAN 2</h3>
+      <div class="dialogue">
+        <p><strong>Michell:</strong> Tanah ini… seperti menolak hidup.</p>
+        <p><strong>Marcell:</strong> Aku akan melindungimu. Dengan cahaya rembulan.</p>
+        <p><strong>Marcell:</strong> Titik kelima… harus ada pengorbanan.</p>
+        <p><strong>Raja Xeeline:</strong> Aku yang akan menjadi pengorbanan itu. Demi Astravell.</p>
+        <p><strong>Eser:</strong> Paduka, jangan… kita semua masih membutuhkanmu.</p>
+        <p><strong>Orven:</strong> Iya, Paduka! Jangan! Biarkan aku saja!</p>
+        <p><strong>Amay:</strong> Penerus sejati adalah mereka yang tetap bersinar, bahkan saat rembulan menghilang.</p>
+      </div>
+
+      <h3>🌕 ADEGAN 3</h3>
+      <div class="dialogue">
+        <p><strong>Michell:</strong> Ia... menyatu dengan cahaya Lumae.</p>
+        <p><strong>Jonathan:</strong> Kita harus menutup pola ritual… cepat!</p>
+        <p><strong>Harvi:</strong> Cahaya kita… jadi pantulan terakhir cahaya bulan.</p>
+        <p>(Cahaya besar memancar. Gerhana sirna. Dunia diselamatkan.)</p>
+      </div>
+
+      <h3>🌄 ADEGAN 4</h3>
+      <div class="dialogue">
+        <p><strong>Michell:</strong> Pahlawan kita... kini bagian dari langit.</p>
+        <p><strong>Marcell:</strong> Dan cahayanya… takkan padam.</p>
+        <p><strong>Harvi:</strong> Astravell dilindungi oleh cinta, pengorbanan, dan harapan.</p>
+        <p><strong>Jonathan:</strong> Dan kita… akan terus menjaganya.</p>
+        <p><strong>Semuanya:</strong> Selamanya hingga akhir hayat.</p>
+      </div>
+
       <button class="btn-back" onclick="closeStory()">⬅ Kembali ke Cover</button>
     </section>
 
@@ -219,22 +254,16 @@
       <p><em>“Di tengah dunia yang kacau, Astravell tetap berdiri. Bukan karena kekuatan… tetapi karena cahaya kecil yang tak pernah menyerah.”</em></p>
     </section>
 
-    <footer>&copy; 2025 Nyanyian Cahaya dari Astravell</footer>
+    <footer>
+      &copy; 2025 Nyanyian Cahaya dari Astravell
+    </footer>
   </div>
 
   <script>
     function openStory() {
       document.getElementById("storyPage").classList.add("active");
-      const audio = document.getElementById("bgMusic");
-      audio.volume = 0;
-      audio.play();
-      let fade = setInterval(() => {
-        if (audio.volume < 1) {
-          audio.volume = Math.min(audio.volume + 0.05, 1);
-        } else {
-          clearInterval(fade);
-        }
-      }, 200);
+      document.getElementById("bgMusic").volume = 0.3;
+      document.getElementById("bgMusic").play();
     }
     function closeStory() {
       document.getElementById("storyPage").classList.remove("active");
