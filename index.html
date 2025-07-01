@@ -4,166 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nyanyian Cahaya dari Astravell</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Lora&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: 'Lora', serif;
-      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
-      color: #e0e7ff;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://images.unsplash.com/photo-1508261304129-953c76f1c3d5?fit=crop&w=1920&q=80') center/cover no-repeat;
-      opacity: 0.12;
-      z-index: -2;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-    }
-    header h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 3.5em;
-      margin: 0;
-      color: #f8fafc;
-      text-shadow: 0 0 15px #818cf8, 0 0 5px #94a3b8;
-    }
-    section {
-      max-width: 960px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid #334155;
-    }
-    section h2 {
-      font-family: 'Cinzel', serif;
-      color: #c7d2fe;
-      margin-top: 0;
-    }
-    .character-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #475569;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #818cf8;
-    }
-    .dialogue p {
-      margin: 12px 0;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      border-left: 4px solid #818cf8;
-      border-radius: 4px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #94a3b8;
-      font-size: 0.9em;
-    }
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: transparent url("https://cdn.pixabay.com/photo/2017/08/30/10/05/star-2697474_1280.png") repeat;
-      background-size: 300px;
-      animation: starScroll 60s linear infinite;
-      opacity: 0.1;
-      z-index: -1;
-    }
-    @keyframes starScroll {
-      from { background-position: 0 0; }
-      to { background-position: 1000px 1000px; }
-    }
-    .cover {
-      height: 100vh;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(180deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.9) 100%);
-      padding: 20px;
-    }
-    .cover img {
-      width: 250px;
-      max-width: 90%;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 30px #818cf8;
-    }
-    .cover h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 3em;
-      color: #f1f5f9;
-      text-shadow: 0 0 10px #818cf8;
-      margin-bottom: 20px;
-    }
-    .cover button {
-      background: linear-gradient(90deg, #6366f1, #818cf8);
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border-radius: 8px;
-      color: #f1f5f9;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .cover button:hover {
-      background: linear-gradient(90deg, #818cf8, #6366f1);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="stars"></div>
 
   <!-- COVER PAGE -->
   <div class="cover">
     <h1>Nyanyian Cahaya dari Astravell</h1>
-        <img src="https://raw.githubusercontent.com/marcellnw/Astravell-moon/main/IMG-20250603-WA0212.jpg" alt="Astravell Moon" />
-    <button onclick="document.getElementById('main').scrollIntoView()">Masuk ke Kisah</button>
+    <img src="assets/images/IMG-20250603-WA0212.jpg" alt="Astravell Moon" />
+    <button id="startButton">Masuk ke Kisah</button>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div id="main">
+  <!-- STORY PAGE -->
+  <div class="story-page" id="storyPage">
+    <audio id="bgMusic" src="assets/audio/fantasy-celtic.mp3" loop></audio>
+
     <header>
       <h1>Nyanyian Cahaya dari Astravell</h1>
     </header>
 
     <section>
       <h2>Latar Cerita</h2>
-      <p>Di ujung benua Eternael, berdiri Astravell Dominion, negeri terpencil yang hidup damai dalam naungan cahaya Lumae, Sang Ibu Bulan. Namun kedamaian itu terancam ketika Relik Abyssalis, peninggalan kegelapan purba, mulai memancarkan energi gelap. Astravell harus bertindak demi menyelamatkan dunia.</p>
+      <p>Kerajaan Astravell Dominion, negeri terpencil di benua Eternael, hidup damai dalam bayang cahaya Lumae, Sang Ibu Bulan. Mereka menjaga keseimbangan dunia melalui ritual rembulan dan pengetahuan kuno yang diwariskan dari leluhur. Namun kedamaian itu terancam ketika Relik Abyssalis, peninggalan kegelapan purba yang seharusnya terkunci selamanya, mulai memancarkan energi gelap. Dunia mulai terguncang. Astravell, yang selama ini menjadi penjaga diam-diam, akhirnya harus bertindak.</p>
     </section>
 
     <section>
       <h2>Karakter Utama</h2>
       <div class="character-list">
-        <div class="card"><strong>Raja Xeeline</strong><br> Pemimpin Astravell yang tenang, bijak, dan terikat sumpah kuno dengan Lumae.</div>
-        <div class="card"><strong>Jonathan</strong><br> Ksatria muda pemberani, kekasih Harvi.</div>
-        <div class="card"><strong>Harvi</strong><br> Penjaga Kuil Rembulan yang sensitif terhadap perubahan spiritual.</div>
-        <div class="card"><strong>Marcell</strong><br> Suami Michell, penjaga kedamaian langit dan ahli sihir bulan.</div>
-        <div class="card"><strong>Michell</strong><br> Istri Marcell, penyembuh dan peramal kerajaan, memiliki penglihatan masa depan.</div>
-        <div class="card"><strong>Amay</strong><br> Prajurit muda pemberani, tegas tanpa ampun.</div>
-        <div class="card"><strong>Eser</strong><br> Prajurit terdepan, sosok tangguh yang tak terkalahkan.</div>
-        <div class="card"><strong>Orven</strong><br> Prajurit setia yang rela berkorban demi kerajaan.</div>
+        <div class="card">
+          <img src="assets/images/Skin Xeeline.png" alt="Xeeline">
+          <strong>Raja Xeeline</strong><br> Pemimpin Astravell yang tenang, bijak, dan terikat sumpah kuno dengan Lumae.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Jonathan.png" alt="Jonathan">
+          <strong>Jonathan</strong><br> Ksatria muda pemberani, kekasih Harvi.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Harvii.png" alt="Harvi">
+          <strong>Harvi</strong><br> Penjaga Kuil Rembulan yang sensitif terhadap perubahan spiritual.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Marcell.png" alt="Marcell">
+          <strong>Marcell</strong><br> Suami Michell, penjaga kedamaian langit dan ahli sihir bulan.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Michell.png" alt="Michell">
+          <strong>Michell</strong><br> Istri Marcell, penyembuh dan peramal kerajaan, memiliki penglihatan masa depan.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Amay.png" alt="Amay">
+          <strong>Amay</strong><br> Prajurit muda pemberani, tegas tanpa ampun.
+        </div>
+        <div class="card">
+          <img src="assets/images/Skin Eser.png" alt="Eser">
+          <strong>Eser</strong><br> Prajurit terdepan, sosok tangguh yang tak terkalahkan.
+        </div>
+        <div class="card">
+          <img src="assets/images/relix abyss.png" alt="Relik Abyssalis">
+          <strong>Relik Abyssalis</strong><br> Peninggalan kegelapan purba yang memancarkan energi gelap dan mengancam dunia.
+        </div>
       </div>
     </section>
 
@@ -191,6 +90,7 @@
         <p><strong>Jonathan:</strong> Dan kita… akan terus menjaganya.</p>
         <p><strong>Semuanya:</strong> Selamanya hingga akhir hayat.</p>
       </div>
+      <button class="btn-back" onclick="closeStory()">⬅ Kembali ke Cover</button>
     </section>
 
     <section>
@@ -198,9 +98,9 @@
       <p><em>“Di tengah dunia yang kacau, Astravell tetap berdiri. Bukan karena kekuatan… tetapi karena cahaya kecil yang tak pernah menyerah.”</em></p>
     </section>
 
-    <footer>
-      &copy; 2025 Nyanyian Cahaya dari Astravell
-    </footer>
+    <footer>&copy; 2025 Nyanyian Cahaya dari Astravell</footer>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
