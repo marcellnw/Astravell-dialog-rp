@@ -4,20 +4,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nyanyian Cahaya dari Astravell</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Lora&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+      color: #e0e7ff;
+      overflow-x: hidden;
+    }
+    .cover {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.9) 100%);
+      z-index: 1;
+      position: relative;
+      text-align: center;
+      padding: 20px;
+    }
+    .cover img {
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px #818cf8;
+      margin-bottom: 30px;
+    }
+    .cover h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3em;
+      color: #f1f5f9;
+      text-shadow: 0 0 10px #818cf8;
+      margin-bottom: 20px;
+    }
+    .cover button {
+      background: linear-gradient(90deg, #6366f1, #818cf8);
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 8px;
+      color: #f1f5f9;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cover button:hover {
+      background: linear-gradient(90deg, #818cf8, #6366f1);
+    }
+    .story-page {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+      padding: 40px 20px;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .story-page.active {
+      display: block;
+      opacity: 1;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5em;
+      color: #f8fafc;
+      text-shadow: 0 0 15px #818cf8;
+      margin: 0;
+    }
+    section {
+      max-width: 960px;
+      margin: 0 auto 40px auto;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    section h2 {
+      font-family: 'Cinzel', serif;
+      color: #c7d2fe;
+      margin-top: 0;
+    }
+    .character-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #818cf8;
+    }
+    .dialogue p {
+      margin: 12px 0;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-left: 4px solid #818cf8;
+      border-radius: 4px;
+    }
+    .btn-back {
+      display: inline-block;
+      margin-top: 40px;
+      background: linear-gradient(90deg, #6366f1, #818cf8);
+      padding: 12px 24px;
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 8px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background: linear-gradient(90deg, #818cf8, #6366f1);
+    }
+  </style>
 </head>
 <body>
 
   <!-- COVER PAGE -->
   <div class="cover">
     <h1>Nyanyian Cahaya dari Astravell</h1>
-    <img src="assets/images/IMG-20250603-WA0212.jpg" alt="Astravell Moon" />
-    <button id="startButton">Masuk ke Kisah</button>
+    <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/IMG-20250603-WA0212.jpg" alt="Astravell Moon" />
+    <button onclick="openStory()">Masuk ke Kisah</button>
   </div>
 
   <!-- STORY PAGE -->
   <div class="story-page" id="storyPage">
-    <audio id="bgMusic" src="https://raw.githubusercontent.com/marcellnw/Astravell-moon/main/assets/audio/ethereal-ambient-269037.mp3" loop></audio>
+    <audio id="bgMusic" src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/ethereal-ambient-269037.mp3" loop></audio>
 
     <header>
       <h1>Nyanyian Cahaya dari Astravell</h1>
@@ -32,36 +168,36 @@
       <h2>Karakter Utama</h2>
       <div class="character-list">
         <div class="card">
-          <img src="assets/images/Skin Xeeline.png" alt="Xeeline">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Xeeline.png" alt="Raja Xeeline" />
           <strong>Raja Xeeline</strong><br> Pemimpin Astravell yang tenang, bijak, dan terikat sumpah kuno dengan Lumae.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Jonathan.png" alt="Jonathan">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Jonathan.png" alt="Jonathan" />
           <strong>Jonathan</strong><br> Ksatria muda pemberani, kekasih Harvi.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Harvii.png" alt="Harvi">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Harvii.png" alt="Harvi" />
           <strong>Harvi</strong><br> Penjaga Kuil Rembulan yang sensitif terhadap perubahan spiritual.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Marcell.png" alt="Marcell">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Marcell.png" alt="Marcell" />
           <strong>Marcell</strong><br> Suami Michell, penjaga kedamaian langit dan ahli sihir bulan.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Michell.png" alt="Michell">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Michell.png" alt="Michell" />
           <strong>Michell</strong><br> Istri Marcell, penyembuh dan peramal kerajaan, memiliki penglihatan masa depan.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Amay.png" alt="Amay">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Amay.png" alt="Amay" />
           <strong>Amay</strong><br> Prajurit muda pemberani, tegas tanpa ampun.
         </div>
         <div class="card">
-          <img src="assets/images/Skin Eser.png" alt="Eser">
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/Skin%20Eser.png" alt="Eser" />
           <strong>Eser</strong><br> Prajurit terdepan, sosok tangguh yang tak terkalahkan.
         </div>
         <div class="card">
-          <img src="assets/images/relix abyss.png" alt="Relik Abyssalis">
-          <strong>Relik Abyssalis</strong><br> Peninggalan kegelapan purba yang memancarkan energi gelap dan mengancam dunia.
+          <img src="https://raw.githubusercontent.com/marcellnw/Astravell-dialog-rp/main/relix%20abyss.png" alt="Relik Abyssalis" />
+          <strong>Relik Abyssalis</strong><br> Simbol kegelapan purba, misterius, memancarkan aura kehancuran.
         </div>
       </div>
     </section>
@@ -74,21 +210,6 @@
         <p><strong>Raja Xeeline:</strong> Jika relik itu bangun, dunia bisa tenggelam dalam kegelapan purba.</p>
         <p><strong>Jonathan:</strong> Relik itu luka lama. Dan luka itu… sedang membuka kembali.</p>
         <p><strong>Marcell:</strong> Kita harus selaraskan lima cahaya bulan sebelum gerhana sempurna. Jika tidak, semuanya akan hancur.</p>
-        <p><strong>Michell:</strong> Tanah ini… seperti menolak hidup.</p>
-        <p><strong>Marcell:</strong> Aku akan melindungimu. Dengan cahaya rembulan.</p>
-        <p><strong>Marcell:</strong> Titik kelima… harus ada pengorbanan.</p>
-        <p><strong>Raja Xeeline:</strong> Aku yang akan menjadi pengorbanan itu. Demi Astravell.</p>
-        <p><strong>Eser:</strong> Paduka, jangan… kita semua masih membutuhkan Paduka.</p>
-        <p><strong>Orven:</strong> Iya, Paduka! Jangan! Biarkan aku saja!</p>
-        <p><strong>Amay:</strong> Penerus sejati adalah mereka yang tetap bersinar, bahkan saat rembulan menghilang.</p>
-        <p><strong>Michell:</strong> Ia… menyatu dengan cahaya Lumae.</p>
-        <p><strong>Jonathan:</strong> Kita harus menutup pola ritual… cepat!</p>
-        <p><strong>Harvi:</strong> Cahaya kita… jadi pantulan terakhir cahaya bulan.</p>
-        <p><strong>Michell:</strong> Pahlawan kita… kini menjadi bagian dari langit.</p>
-        <p><strong>Marcell:</strong> Dan cahayanya… takkan padam.</p>
-        <p><strong>Harvi:</strong> Astravell dilindungi oleh cinta, pengorbanan, dan harapan.</p>
-        <p><strong>Jonathan:</strong> Dan kita… akan terus menjaganya.</p>
-        <p><strong>Semuanya:</strong> Selamanya hingga akhir hayat.</p>
       </div>
       <button class="btn-back" onclick="closeStory()">⬅ Kembali ke Cover</button>
     </section>
@@ -101,6 +222,26 @@
     <footer>&copy; 2025 Nyanyian Cahaya dari Astravell</footer>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function openStory() {
+      document.getElementById("storyPage").classList.add("active");
+      const audio = document.getElementById("bgMusic");
+      audio.volume = 0;
+      audio.play();
+      let fade = setInterval(() => {
+        if (audio.volume < 1) {
+          audio.volume = Math.min(audio.volume + 0.05, 1);
+        } else {
+          clearInterval(fade);
+        }
+      }, 200);
+    }
+    function closeStory() {
+      document.getElementById("storyPage").classList.remove("active");
+      document.getElementById("bgMusic").pause();
+      document.getElementById("bgMusic").currentTime = 0;
+    }
+  </script>
+
 </body>
 </html>
